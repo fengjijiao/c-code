@@ -40,6 +40,12 @@ void halfAngleToFullAngle(char *half, char *full) {
 	}
 }
 
+char * halfAngleToFullAngleF(char *half) {
+	char *result = (char *)malloc(sizeof(char)*180);
+	halfAngleToFullAngle(half, result);
+	return result;
+}
+
 int main(int argc, char* argv[]) {
 	// char p[] = {0xb0, 0xa3};
 	// printf("%s\n", p);
@@ -62,5 +68,7 @@ int main(int argc, char* argv[]) {
 	char *f = (char *)malloc(sizeof(char)*100);
 	halfAngleToFullAngle(e, f);
 	printf("%s\n", f);
+	
+	printf("%s\n", halfAngleToFullAngleF("45487ffhfjkghdfhkuiut"));
 	return 0;
 }
