@@ -7,12 +7,20 @@ char* halfAngleToFullAngleOneChar(char half) {
 	char *fullCharTablel = "ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ";
 	char *fullCharTableL = "ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ";
 	char *full = (char *)malloc(sizeof(char)*3);
+	
+	// other case
+	char *halfp = &half;
+	strcpy(full, halfp);
+	
+	// number
 	if(half >= 0x30 && half <= 0x39) {
 		int index = half - 0x30;
 		strncpy(full, fullCharTableN + index * 3, 3);
+	// uppercase letter
 	}else if(half >= 0x61 && half <= 0x7a) {
 		int index = half - 0x61;
 		strncpy(full, fullCharTablel + index * 3, 3);
+	// lower case letters
 	}else if(half >= 0x41 && half <= 0x5a) {
 		int index = half - 0x41;
 		strncpy(full, fullCharTableL + index * 3, 3);
@@ -50,7 +58,7 @@ int main(int argc, char* argv[]) {
 	// strncpy(d, c, 3);
 	// printf("%s\n", d);
 	
-	char *e = "1234567890abcdefghjklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char *e = "1234567890abcdefghjklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZＸＹＺ";
 	char *f = (char *)malloc(sizeof(char)*100);
 	halfAngleToFullAngle(e, f);
 	printf("%s\n", f);
